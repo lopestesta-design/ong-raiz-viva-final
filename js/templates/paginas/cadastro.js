@@ -49,7 +49,7 @@ export const cadastro = {
                 <label class="opcao"><input type="radio" name="tipo" value="voluntario"> Voluntário</label>
                 <label class="opcao"><input type="radio" name="tipo" value="ambos"> Os dois</label>
               </div>
-              <p id="tipo-erro" class="erro"></p>
+              <p id="tipo-erro" class="erro" aria-live="polite"></p>
             </fieldset>
 
             <div class="grid mt-4">
@@ -77,7 +77,7 @@ export const cadastro = {
               <input type="checkbox" id="lgpd" name="lgpd" aria-describedby="lgpd-erro">
               <span>Autorizo o Instituto Raiz Viva a usar meus dados para contato, conforme a LGPD. *</span>
             </label>
-            <p id="lgpd-erro" class="erro"></p>
+            <p id="lgpd-erro" class="erro" aria-live="polite"></p>
           </fieldset>
 
           <div class="form-actions">
