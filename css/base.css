@@ -36,6 +36,8 @@ a { color: var(--color-primary-strong); text-underline-offset: 3px; }
 a:hover { color: var(--color-heading); }
 
 :focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+/* regiões de fundo escuro usam o anel amarelo */
+.site-header, .site-footer { --focus-ring: var(--focus-ring-dark); }
 
 .skip-link {
   position: absolute; left: -999px; top: 0; z-index: 100;

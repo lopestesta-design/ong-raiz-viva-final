@@ -88,6 +88,9 @@
   --shadow-md: 0 6px 20px rgb(31 42 68 / 0.14);
 
   /* ----- Interação ----- */
-  --focus-ring: 3px solid var(--color-accent);
+  /* anel de foco: azul-marinho em fundo claro (13:1) e amarelo em fundo escuro (7,8:1); mínimo WCAG 1.4.11 = 3:1 */
+  --focus-ring-light: 3px solid var(--ink-900);
+  --focus-ring-dark: 3px solid var(--sun-500);
+  --focus-ring: var(--focus-ring-light);
   --transition: 0.15s ease;
 }
