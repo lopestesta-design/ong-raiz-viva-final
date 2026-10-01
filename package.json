@@ -1,0 +1,9 @@
+{
+  "name": "ong-raiz-viva-spa",
+  "version": "1.0.0",
+  "description": "SPA do Instituto Raiz Viva (Experiência Prática III de Desenvolvimento Front-end)",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

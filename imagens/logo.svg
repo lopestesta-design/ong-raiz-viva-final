@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Logotipo Instituto Raiz Viva">
+  <circle cx="24" cy="24" r="24" fill="#1F2A44"/>
+  <path d="M24 38V22" stroke="#F2B632" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M24 24c0-7-5-11-12-11 0 7 5 11 12 11z" fill="#4FB286"/>
+  <path d="M24 28c0-6 4-9 10-9 0 6-4 9-10 9z" fill="#2F7D5B"/>
+</svg>

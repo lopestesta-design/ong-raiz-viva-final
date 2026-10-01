@@ -1,0 +1,124 @@
+/* ==========================================================
+   LAYOUT: contêiner, grid de 12 colunas e utilitários
+   Mobile-first. Uso: <div class="grid"><div class="col-12 col-md-6">...
+   Sem classe de coluna, o item ocupa as 12 colunas.
+   Breakpoints (5 @media):
+     sm 36rem (576px) | md 48rem (768px) | lg 62rem (992px)
+     xl 75rem (1200px) | xxl 90rem (1440px, monitores panorâmicos)
+   ========================================================== */
+
+.container {
+  width: min(100% - 2 * var(--space-4), var(--container-max));
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-5) var(--gutter);
+}
+.grid > * { grid-column: span 12; min-width: 0; }
+
+.secao { padding-block: clamp(var(--space-7), 6vw, var(--space-8)); }
+.secao--suave { background: var(--color-surface-alt); }
+
+/* ----- Utilitários de espaçamento ----- */
+.mt-4 { margin-top: var(--space-4); }
+.mt-5 { margin-top: var(--space-5); }
+.mb-0 { margin-bottom: 0; }
+
+/* ----- colunas base (celular) ----- */
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-5 { grid-column: span 5; }
+.col-6 { grid-column: span 6; }
+.col-7 { grid-column: span 7; }
+.col-8 { grid-column: span 8; }
+.col-9 { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* ----- a partir de 36rem ----- */
+@media (min-width: 36rem) {
+  .col-sm-1 { grid-column: span 1; }
+  .col-sm-2 { grid-column: span 2; }
+  .col-sm-3 { grid-column: span 3; }
+  .col-sm-4 { grid-column: span 4; }
+  .col-sm-5 { grid-column: span 5; }
+  .col-sm-6 { grid-column: span 6; }
+  .col-sm-7 { grid-column: span 7; }
+  .col-sm-8 { grid-column: span 8; }
+  .col-sm-9 { grid-column: span 9; }
+  .col-sm-10 { grid-column: span 10; }
+  .col-sm-11 { grid-column: span 11; }
+  .col-sm-12 { grid-column: span 12; }
+}
+
+/* ----- a partir de 48rem ----- */
+@media (min-width: 48rem) {
+  .col-md-1 { grid-column: span 1; }
+  .col-md-2 { grid-column: span 2; }
+  .col-md-3 { grid-column: span 3; }
+  .col-md-4 { grid-column: span 4; }
+  .col-md-5 { grid-column: span 5; }
+  .col-md-6 { grid-column: span 6; }
+  .col-md-7 { grid-column: span 7; }
+  .col-md-8 { grid-column: span 8; }
+  .col-md-9 { grid-column: span 9; }
+  .col-md-10 { grid-column: span 10; }
+  .col-md-11 { grid-column: span 11; }
+  .col-md-12 { grid-column: span 12; }
+}
+
+/* ----- a partir de 62rem ----- */
+@media (min-width: 62rem) {
+  .col-lg-1 { grid-column: span 1; }
+  .col-lg-2 { grid-column: span 2; }
+  .col-lg-3 { grid-column: span 3; }
+  .col-lg-4 { grid-column: span 4; }
+  .col-lg-5 { grid-column: span 5; }
+  .col-lg-6 { grid-column: span 6; }
+  .col-lg-7 { grid-column: span 7; }
+  .col-lg-8 { grid-column: span 8; }
+  .col-lg-9 { grid-column: span 9; }
+  .col-lg-10 { grid-column: span 10; }
+  .col-lg-11 { grid-column: span 11; }
+  .col-lg-12 { grid-column: span 12; }
+}
+
+/* ----- a partir de 75rem ----- */
+@media (min-width: 75rem) {
+  .col-xl-1 { grid-column: span 1; }
+  .col-xl-2 { grid-column: span 2; }
+  .col-xl-3 { grid-column: span 3; }
+  .col-xl-4 { grid-column: span 4; }
+  .col-xl-5 { grid-column: span 5; }
+  .col-xl-6 { grid-column: span 6; }
+  .col-xl-7 { grid-column: span 7; }
+  .col-xl-8 { grid-column: span 8; }
+  .col-xl-9 { grid-column: span 9; }
+  .col-xl-10 { grid-column: span 10; }
+  .col-xl-11 { grid-column: span 11; }
+  .col-xl-12 { grid-column: span 12; }
+}
+
+/* ----- a partir de 90rem ----- */
+@media (min-width: 90rem) {
+  /* telas panorâmicas: contêiner mais largo e mais respiro entre colunas */
+  :root { --container-max: 80rem; --gutter: var(--space-6); }
+  .col-xxl-1 { grid-column: span 1; }
+  .col-xxl-2 { grid-column: span 2; }
+  .col-xxl-3 { grid-column: span 3; }
+  .col-xxl-4 { grid-column: span 4; }
+  .col-xxl-5 { grid-column: span 5; }
+  .col-xxl-6 { grid-column: span 6; }
+  .col-xxl-7 { grid-column: span 7; }
+  .col-xxl-8 { grid-column: span 8; }
+  .col-xxl-9 { grid-column: span 9; }
+  .col-xxl-10 { grid-column: span 10; }
+  .col-xxl-11 { grid-column: span 11; }
+  .col-xxl-12 { grid-column: span 12; }
+}

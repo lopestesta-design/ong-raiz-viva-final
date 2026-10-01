@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instituto Raiz Viva | Hortas comunitárias e educação alimentar</title>
+  <meta name="description" content="O Instituto Raiz Viva cria hortas comunitárias, oficinas de educação alimentar e cestas solidárias para famílias em situação de vulnerabilidade.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/navegacao.css">
+  <link rel="stylesheet" href="../css/spa.css">
+</head>
+<body>
+  <a class="skip-link" href="#app">Ir para o conteúdo principal</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="marca" href="#/">
+        <img src="../imagens/logo.svg" alt="" width="44" height="44">
+        <span>Instituto Raiz Viva</span>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
+          <span class="menu-toggle__barras" aria-hidden="true"></span>
+        </button>
+        <div class="menu-painel" id="menu-principal">
+          <ul class="menu">
+            <li><a href="#/" data-rota="/">Início</a></li>
+            <li class="has-submenu">
+              <a href="#/projetos" data-rota="/projetos">Projetos sociais</a>
+              <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-projetos" aria-label="Mostrar projetos"></button>
+              <ul class="submenu" id="submenu-projetos">
+                <li><a href="#/projetos/hortas">Hortas Comunitárias</a></li>
+                <li><a href="#/projetos/oficinas">Oficinas Cozinha Inteira</a></li>
+                <li><a href="#/projetos/cestas">Cestas Solidárias</a></li>
+              </ul>
+            </li>
+            <li><a href="#/cadastro" data-rota="/cadastro">Seja doador ou voluntário</a></li>
+            <li><a href="#/apoiadores" data-rota="/apoiadores">Apoiadores</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app" tabindex="-1">
+    <noscript>
+      <section class="secao">
+        <div class="container">
+          <h1>É preciso ativar o JavaScript</h1>
+          <p>Este site é uma aplicação de página única e precisa de JavaScript para funcionar.</p>
+        </div>
+      </section>
+    </noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container grid">
+      <section class="col-12 col-md-4" aria-labelledby="rodape-contato">
+        <h2 id="rodape-contato">Contato</h2>
+        <address>
+          Rua das Acácias, 120 - Centro<br>
+          Taubaté - SP, 12000-000<br>
+          <a href="mailto:contato@raizviva.example">contato@raizviva.example</a><br>
+          <a href="tel:+551200000000">(12) 0000-0000</a>
+        </address>
+      </section>
+      <section class="col-12 col-md-4" aria-labelledby="rodape-mapa">
+        <h2 id="rodape-mapa">Mapa do site</h2>
+        <ul>
+          <li><a href="#/">Início</a></li>
+          <li><a href="#/projetos">Projetos sociais</a></li>
+          <li><a href="#/cadastro">Cadastro</a></li>
+          <li><a href="#/apoiadores">Apoiadores</a></li>
+        </ul>
+      </section>
+      <p class="col-12 col-md-4"><small>&copy; 2026 Instituto Raiz Viva. Organização fictícia criada para a Experiência Prática III de Desenvolvimento Front-end.</small></p>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="modal-confirmar" aria-labelledby="confirmar-titulo">
+    <div class="modal__corpo">
+      <h2 id="confirmar-titulo">Confirmar</h2>
+      <p id="confirmar-texto"></p>
+      <form method="dialog" class="modal__acoes">
+        <button type="submit" value="sim" id="confirmar-sim" class="botao botao--perigo">Confirmar</button>
+        <button type="submit" value="nao" class="botao botao--secundario">Cancelar</button>
+      </form>
+    </div>
+  </dialog>
+
+  <div class="toast-area" role="status" aria-live="polite"></div>
+  <p id="anuncio" class="sr-only" role="status" aria-live="polite"></p>
+
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>

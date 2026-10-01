@@ -1,0 +1,105 @@
+/* ==========================================================
+   NAVEGAÇÃO: menu principal responsivo
+   Celular (padrão): botão hambúrguer + painel que abre/fecha
+   Desktop (min-width: 48rem): menu horizontal + submenu dropdown
+   ========================================================== */
+
+.nav { margin-left: auto; }
+
+/* ----- Botão hambúrguer (as 3 barras são desenhadas só com CSS) ----- */
+.menu-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; padding: 0;
+  background: transparent; cursor: pointer;
+  border: var(--border-width) solid rgb(255 255 255 / 0.6); border-radius: var(--radius-sm);
+  transition: border-color var(--transition);
+}
+.menu-toggle:hover { border-color: var(--white); }
+.menu-toggle__barras,
+.menu-toggle__barras::before,
+.menu-toggle__barras::after {
+  display: block; width: 22px; height: 2px; border-radius: 2px;
+  background: var(--white);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+.menu-toggle__barras { position: relative; }
+.menu-toggle__barras::before,
+.menu-toggle__barras::after { content: ""; position: absolute; left: 0; }
+.menu-toggle__barras::before { top: -7px; }
+.menu-toggle__barras::after { top: 7px; }
+/* estado aberto: as barras viram um X */
+.menu-toggle[aria-expanded="true"] .menu-toggle__barras { background: transparent; }
+.menu-toggle[aria-expanded="true"] .menu-toggle__barras::before { transform: translateY(7px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] .menu-toggle__barras::after { transform: translateY(-7px) rotate(-45deg); }
+
+/* ----- Painel do menu no celular: fechado por padrão ----- */
+.menu-painel {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--color-brand-dark);
+  border-top: 1px solid rgb(255 255 255 / 0.15);
+  max-height: 0; overflow: hidden; visibility: hidden; /* sai da ordem do Tab quando fechado */
+  transition: max-height 0.3s ease, visibility 0s linear 0.3s;
+}
+.menu-painel.is-open {
+  max-height: 32rem; visibility: visible;
+  transition: max-height 0.3s ease, visibility 0s;
+}
+
+.menu { list-style: none; margin: 0; padding: var(--space-3) var(--space-4) var(--space-4); display: flex; flex-direction: column; }
+.menu a {
+  display: block; padding: var(--space-3) 0;
+  color: var(--white); text-decoration: none; border-bottom: 3px solid transparent;
+}
+.menu a:hover { border-bottom-color: var(--color-accent); color: var(--white); }
+.menu a[aria-current="page"] { border-bottom-color: var(--color-accent); font-weight: var(--weight-semibold); }
+
+/* submenu no celular: sempre visível, recuado, dentro do painel */
+.submenu { list-style: none; margin: 0; padding: 0 0 0 var(--space-4); }
+.submenu a { font-size: var(--text-sm); padding: var(--space-2) 0; }
+.submenu-toggle { display: none; }
+
+/* ==========================================================
+   DESKTOP: menu horizontal e submenu dropdown
+   ========================================================== */
+@media (min-width: 48rem) {
+  .menu-toggle { display: none; }
+
+  .menu-painel {
+    position: static; max-height: none; overflow: visible; visibility: visible;
+    background: none; border: 0; transition: none;
+  }
+  .menu { flex-direction: row; align-items: center; gap: var(--space-1) var(--space-5); padding: 0; }
+  .menu a { padding: var(--space-2) 0; }
+
+  .has-submenu { position: relative; display: flex; align-items: center; gap: var(--space-1); }
+
+  /* botão-seta que abre o submenu por clique ou teclado */
+  .submenu-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; padding: 0; background: transparent; border: 0; border-radius: var(--radius-sm); cursor: pointer;
+  }
+  .submenu-toggle::before {
+    content: ""; width: 0.5rem; height: 0.5rem;
+    border-right: 2px solid var(--white); border-bottom: 2px solid var(--white);
+    transform: translateY(-2px) rotate(45deg); transition: transform 0.2s ease;
+  }
+  .submenu-toggle[aria-expanded="true"]::before { transform: translateY(2px) rotate(225deg); }
+
+  /* submenu oculto por padrão: transparente, deslocado e fora do Tab */
+  .submenu {
+    position: absolute; top: 100%; left: 0; z-index: 60; min-width: 16rem;
+    padding: var(--space-2);
+    background: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-md);
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+  }
+  /* aparece com mouse (hover), teclado (focus-within) ou clique (.is-open) */
+  .has-submenu:hover > .submenu,
+  .has-submenu:focus-within > .submenu,
+  .has-submenu.is-open > .submenu {
+    opacity: 1; visibility: visible; transform: none;
+    transition-delay: 0s;
+  }
+  .submenu a { color: var(--color-heading); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); font-size: var(--text-base); }
+  .submenu a:hover { background: var(--color-surface-alt); color: var(--color-heading); border-bottom-color: transparent; }
+}

@@ -1,0 +1,93 @@
+/* ==========================================================
+   TOKENS DO DESIGN SYSTEM - Instituto Raiz Viva
+   Única fonte de verdade para cores, tipografia e espaçamentos.
+   Breakpoints (media queries não aceitam var()):
+     sm 36rem (576px) | md 48rem (768px) | lg 62rem (992px) | xl 75rem (1200px) | xxl 90rem (1440px)
+   ========================================================== */
+:root {
+  /* ----- Cores: paleta primitiva ----- */
+  --ink-900: #1F2A44;
+  --ink-700: #26304A;
+  --ink-500: #55607A;
+  --leaf-700: #1F5A41;
+  --leaf-600: #2F7D5B;
+  --leaf-400: #4FB286;
+  --leaf-100: #E6F1EB;
+  --sun-500: #F2B632;
+  --sun-600: #E0A21A;
+  --paper: #FBFCFA;
+  --white: #FFFFFF;
+  --gray-300: #C9D5CE;
+  --gray-500: #76839A;
+  --red-700: #B3261E;
+  --red-50: #FFF6F5;
+  --green-700: #1B6B45;
+
+  /* ----- Cores: papéis semânticos (usar estes nos componentes) ----- */
+  --color-bg: var(--paper);
+  --color-surface: var(--white);
+  --color-surface-alt: var(--leaf-100);
+  --color-text: var(--ink-700);
+  --color-text-muted: var(--ink-500);
+  --color-heading: var(--ink-900);
+  --color-primary: var(--leaf-600);
+  --color-primary-strong: var(--leaf-700);
+  --color-accent: var(--sun-500);
+  --color-accent-strong: var(--sun-600);
+  --color-brand-dark: var(--ink-900);
+  --color-border: var(--gray-300);
+  --color-border-strong: var(--gray-500);
+  --color-danger: var(--red-700);
+  --color-danger-bg: var(--red-50);
+  --color-success: var(--green-700);
+  --color-success-bg: #E3F4EA;
+  --color-warning-bg: #FFF4D6;
+  --color-warning-text: #6B4A00;
+  --color-info-bg: var(--leaf-100);
+  --color-neutral-bg: #E8ECF2;
+
+  /* ----- Tipografia ----- */
+  --font-heading: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+
+  /* escala fluida: cresce suavemente entre celular e desktop */
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: clamp(1.125rem, 1.02rem + 0.5vw, 1.3rem);
+  --text-xl: clamp(1.3rem, 1.1rem + 0.9vw, 1.7rem);
+  --text-2xl: clamp(1.6rem, 1.2rem + 1.8vw, 2.4rem);
+  --text-3xl: clamp(2.2rem, 1.4rem + 3.5vw, 3.8rem);
+
+  --leading-tight: 1.15;
+  --leading-body: 1.6;
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 800;
+
+  /* ----- Espaçamentos: escala modular (base 4px) ----- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  /* ----- Layout ----- */
+  --container-max: 68rem;
+  --gutter: var(--space-5);
+
+  /* ----- Forma e elevação ----- */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --border-width: 2px;
+  --shadow-sm: 0 1px 3px rgb(31 42 68 / 0.12);
+  --shadow-md: 0 6px 20px rgb(31 42 68 / 0.14);
+
+  /* ----- Interação ----- */
+  --focus-ring: 3px solid var(--color-accent);
+  --transition: 0.15s ease;
+}

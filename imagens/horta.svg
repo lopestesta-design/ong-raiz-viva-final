@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <rect width="600" height="400" fill="#E6F1EB"/>
+  <circle cx="480" cy="90" r="46" fill="#F2B632"/>
+  <rect y="230" width="600" height="170" fill="#6B4F3A"/>
+  <g stroke="#4B3527" stroke-width="6" stroke-linecap="round">
+    <path d="M0 270h600M0 320h600M0 370h600"/>
+  </g>
+  <g fill="#2F7D5B">
+    <g id="broto"><path d="M0 0v-46" stroke="#2F7D5B" stroke-width="5" stroke-linecap="round"/>
+      <path d="M0-34c0-16-12-24-26-24 0 16 12 24 26 24z" fill="#2F7D5B"/><path d="M0-24c0-14 10-20 22-20 0 14-10 20-22 20z" fill="#4FB286"/></g>
+  </g>
+  <use href="#broto" x="70" y="266"/><use href="#broto" x="190" y="266"/><use href="#broto" x="310" y="266"/><use href="#broto" x="430" y="266"/><use href="#broto" x="550" y="266"/>
+  <use href="#broto" x="130" y="316"/><use href="#broto" x="250" y="316"/><use href="#broto" x="370" y="316"/><use href="#broto" x="490" y="316"/>
+  <use href="#broto" x="70" y="366"/><use href="#broto" x="190" y="366"/><use href="#broto" x="310" y="366"/><use href="#broto" x="430" y="366"/><use href="#broto" x="550" y="366"/>
+</svg>

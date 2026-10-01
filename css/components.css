@@ -1,0 +1,230 @@
+/* ==========================================================
+   COMPONENTES: usam apenas tokens e Flexbox/Grid
+   ========================================================== */
+
+/* ----- Cabeçalho e navegação (Flexbox) ----- */
+.site-header { position: relative; z-index: 50; background: var(--color-brand-dark); color: var(--white); }
+.site-header .container {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: var(--space-3) var(--space-6);
+  padding-block: var(--space-3);
+}
+.marca {
+  display: flex; align-items: center; gap: var(--space-3);
+  color: var(--white); text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--weight-bold); font-size: var(--text-lg);
+}
+.marca img { width: 44px; height: 44px; }
+
+/* ----- Botões (Flexbox para centralizar o conteúdo) ----- */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: var(--space-3) var(--space-5);
+  border: var(--border-width) solid transparent; border-radius: var(--radius-md);
+  background: var(--color-accent); color: var(--color-heading);
+  font-family: var(--font-heading); font-weight: var(--weight-bold); font-size: 1rem;
+  text-decoration: none; cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
+}
+.botao:hover { background: var(--color-accent-strong); color: var(--color-heading); }
+.botao--secundario { background: transparent; border-color: var(--color-heading); }
+.botao--secundario:hover { background: var(--color-heading); color: var(--white); }
+
+/* ----- Hero ----- */
+.hero { background: var(--color-surface-alt); }
+.hero::after {
+  /* sulcos de plantio: assinatura visual da marca */
+  content: ""; display: block; height: 56px;
+  background: repeating-linear-gradient(90deg, var(--color-primary) 0 14px, transparent 14px 28px);
+}
+.hero .container { padding-block: clamp(var(--space-7), 8vw, var(--space-8)) clamp(var(--space-6), 6vw, var(--space-7)); }
+.hero p { font-size: var(--text-lg); }
+.hero .acoes { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); }
+
+/* ----- Números de impacto ----- */
+.numeros { list-style: none; margin: var(--space-5) 0 var(--space-4); padding: 0; }
+.numeros li { border-left: 5px solid var(--color-accent); padding-left: var(--space-4); }
+.numeros strong { display: block; font-family: var(--font-heading); font-size: var(--text-2xl); color: var(--color-heading); line-height: 1; }
+
+/* ----- Cartão (Flexbox em coluna: o link/botão fica sempre no rodapé) ----- */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md); padding: var(--space-5);
+}
+.card > :last-child { margin-top: auto; margin-bottom: 0; }
+.card p { margin-bottom: var(--space-2); }
+
+/* ----- Projetos (cartão + lista de definição) ----- */
+.projeto header { margin-bottom: var(--space-2); }
+.projeto dl { display: grid; grid-template-columns: max-content 1fr; gap: var(--space-1) var(--space-4); margin: 0; }
+.projeto dt { font-weight: var(--weight-bold); color: var(--color-heading); }
+.projeto dd { margin: 0; }
+
+/* ----- Figura ----- */
+.figura { margin: var(--space-5) 0 0; }
+.figura img { display: block; width: 100%; border-radius: var(--radius-md); }
+.figura figcaption { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-2); }
+
+/* ----- Tabela ----- */
+.tabela-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--color-surface); }
+caption { text-align: left; font-family: var(--font-heading); font-weight: var(--weight-bold); padding-bottom: var(--space-2); color: var(--color-heading); }
+th, td { text-align: left; padding: var(--space-3) var(--space-3); border-bottom: 1px solid var(--color-border); }
+thead th { background: var(--color-brand-dark); color: var(--white); }
+tbody th { font-weight: var(--weight-bold); }
+
+/* ----- Formulário ----- */
+.formulario { display: grid; gap: var(--space-5); max-width: 46rem; }
+fieldset {
+  min-width: 0; margin-inline: 0; background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md); padding: var(--space-4) var(--space-5) var(--space-5);
+}
+legend { font-family: var(--font-heading); font-weight: var(--weight-bold); font-size: var(--text-lg); color: var(--color-heading); padding-inline: var(--space-2); }
+.campo { display: flex; flex-direction: column; gap: var(--space-1); }
+label { font-weight: var(--weight-semibold); color: var(--color-heading); }
+.dica { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea {
+  width: 100%; font: inherit; color: var(--color-text); background: var(--color-surface);
+  padding: var(--space-3); border: var(--border-width) solid var(--color-border-strong); border-radius: var(--radius-sm);
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: var(--focus-ring); outline-offset: 1px; border-color: var(--color-heading);
+}
+/* feedback só depois que a pessoa interagiu com o campo */
+input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: var(--color-danger); background: var(--color-danger-bg); }
+input:user-valid, select:user-valid { border-color: var(--color-success); }
+
+.opcoes { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); }
+.opcao { display: flex; align-items: center; gap: var(--space-2); font-weight: var(--weight-regular); color: var(--color-text); }
+.opcao input { width: 1.2rem; height: 1.2rem; accent-color: var(--color-primary); }
+.subgrupo { border: 0; padding: 0; }
+.subgrupo legend { padding: 0; font-size: 1rem; margin-bottom: var(--space-2); }
+.form-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+.mensagem-sucesso { border: var(--border-width) solid var(--color-success); background: var(--color-surface-alt); border-radius: var(--radius-md); padding: var(--space-5); margin-bottom: var(--space-5); }
+.mensagem-sucesso[hidden] { display: none; }
+
+/* ----- Rodapé (o grid de 12 colunas vem do HTML) ----- */
+.site-footer { background: var(--color-brand-dark); color: #E4E9F2; padding-block: var(--space-7); font-size: var(--text-sm); }
+.site-footer a { color: var(--color-accent); }
+.site-footer address { font-style: normal; }
+.site-footer h2 { color: var(--white); font-size: var(--text-lg); }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+
+/* ==========================================================
+   INTERAÇÃO: estados de botões, cartões, formulários, alertas e modais
+   ========================================================== */
+
+/* ----- Estados do botão ----- */
+.botao:active { transform: scale(0.97); }
+.botao:focus-visible { outline: var(--focus-ring); outline-offset: 3px; }
+.botao:disabled, .botao[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ----- Cartões interativos ----- */
+.card { position: relative; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--color-primary); }
+.card:focus-within { border-color: var(--color-heading); }
+/* cartão inteiro clicável: o link "estica" por um pseudo-elemento */
+.card--link a { position: static; font-weight: var(--weight-semibold); }
+.card--link a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius-md); }
+.card--link a:focus-visible { outline: none; }
+.card--link a:focus-visible::after { outline: var(--focus-ring); outline-offset: 3px; }
+
+/* ----- Estados do formulário ----- */
+.campo:focus-within > label { color: var(--color-primary-strong); }
+input::placeholder, textarea::placeholder { color: var(--color-text-muted); opacity: 1; }
+input:disabled, select:disabled, textarea:disabled { background: var(--color-surface-alt); cursor: not-allowed; opacity: 0.7; }
+.campo:has(:user-invalid) .dica { color: var(--color-danger); }
+.opcao input:checked + span, .opcao:has(input:checked) { color: var(--color-heading); font-weight: var(--weight-semibold); }
+
+/* ----- Alertas contextuais (4 variações) -----
+   Uso: <p class="alerta alerta--sucesso" role="status">Texto</p>
+   Variações: sem modificador (info), --sucesso, --aviso, --erro.
+   Use role="alert" apenas em erros; role="status" ou "note" nos demais. */
+.alerta {
+  display: flex; align-items: flex-start; gap: var(--space-3);
+  max-width: 46rem; margin: 0 0 var(--space-4); padding: var(--space-3) var(--space-4);
+  border-left: 6px solid var(--color-primary); border-radius: var(--radius-sm);
+  background: var(--color-info-bg); color: var(--color-text);
+}
+.alerta::before {
+  content: "i"; flex: none; display: grid; place-items: center;
+  width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  background: var(--color-primary-strong); color: var(--white);
+  font-weight: var(--weight-bold); font-size: var(--text-sm);
+}
+.alerta--sucesso { border-left-color: var(--color-success); background: var(--color-success-bg); }
+.alerta--sucesso::before { content: "\2713"; background: var(--color-success); }
+.alerta--aviso { border-left-color: var(--color-accent-strong); background: var(--color-warning-bg); }
+.alerta--aviso::before { content: "!"; background: var(--color-warning-text); }
+.alerta--erro { border-left-color: var(--color-danger); background: var(--color-danger-bg); }
+.alerta--erro::before { content: "!"; background: var(--color-danger); }
+
+/* ----- Badges (etiquetas de categoria) -----
+   Uso: <span class="badge badge--sucesso">Vagas abertas</span> */
+.badge {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: var(--space-1) var(--space-3); border-radius: 999px;
+  background: var(--color-info-bg); color: var(--color-primary-strong);
+  font-size: var(--text-sm); font-weight: var(--weight-semibold); line-height: 1.3;
+}
+.badge::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: currentColor; }
+.badge--sucesso { background: var(--color-success-bg); color: var(--color-success); }
+.badge--aviso { background: var(--color-warning-bg); color: var(--color-warning-text); }
+.badge--erro { background: var(--color-danger-bg); color: var(--color-danger); }
+.badge--neutro { background: var(--color-neutral-bg); color: var(--color-text); }
+
+.projeto header { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }
+.projeto header h2 { margin: 0; }
+
+/* ----- Toast (notificação que some sozinha) -----
+   Uso: a página tem <div class="toast-area" role="status" aria-live="polite"></div>
+   e o JavaScript chama mostrarToast("Mensagem", "sucesso"). */
+.toast-area {
+  position: fixed; right: var(--space-4); bottom: var(--space-4); z-index: 200;
+  display: flex; flex-direction: column; gap: var(--space-3);
+  width: min(24rem, 100% - 2 * var(--space-4)); pointer-events: none;
+}
+.toast {
+  pointer-events: auto; display: flex; align-items: flex-start; gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface); color: var(--color-text);
+  border: 1px solid var(--color-border); border-left: 6px solid var(--color-primary);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-md);
+  animation: toast-entrada 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.toast p { margin: 0; flex: 1; font-size: var(--text-sm); }
+.toast--sucesso { border-left-color: var(--color-success); }
+.toast--aviso { border-left-color: var(--color-accent-strong); }
+.toast--erro { border-left-color: var(--color-danger); }
+.toast--saindo { opacity: 0; transform: translateX(1.5rem); }
+.toast__fechar {
+  flex: none; width: 28px; height: 28px; padding: 0; border: 0; border-radius: var(--radius-sm);
+  background: transparent; color: var(--color-heading); font-size: 1.25rem; line-height: 1; cursor: pointer;
+}
+.toast__fechar:hover { background: var(--color-surface-alt); }
+@keyframes toast-entrada { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* ----- Modal (elemento nativo <dialog>) ----- */
+.modal {
+  width: min(32rem, 100% - 2rem); padding: 0; border: 0; border-radius: var(--radius-lg);
+  background: var(--color-surface); color: var(--color-text); box-shadow: var(--shadow-md);
+}
+.modal::backdrop { background: rgb(31 42 68 / 0.65); }
+.modal[open] { animation: modal-entrada 0.25s ease; }
+.modal[open]::backdrop { animation: modal-fundo 0.25s ease; }
+.modal__corpo { padding: var(--space-5); }
+.modal__corpo ol { padding-left: var(--space-5); }
+.modal__acoes { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: var(--space-5) 0 0; }
+@keyframes modal-entrada { from { opacity: 0; transform: translateY(14px) scale(0.98); } to { opacity: 1; transform: none; } }
+@keyframes modal-fundo { from { opacity: 0; } to { opacity: 1; } }
+
+/* ----- Guia de componentes ----- */
+.guia-lista { display: flex; flex-wrap: wrap; gap: var(--space-3); list-style: none; margin: 0 0 var(--space-4); padding: 0; }
+.guia-codigo { margin: 0; padding: var(--space-3) var(--space-4); overflow-x: auto; background: var(--color-brand-dark); color: #E4E9F2; border-radius: var(--radius-sm); font-size: var(--text-sm); }
+.guia-acoes { display: flex; flex-wrap: wrap; gap: var(--space-3); }
