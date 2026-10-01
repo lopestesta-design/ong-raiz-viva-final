@@ -16,10 +16,13 @@ function removerToast(toast) {
   setTimeout(() => toast.remove(), 300);
 }
 
-export function mostrarToast(mensagem, tipo = "info", tempo = 4500) {
+/* Toasts de erro ficam na tela até a pessoa fechá-los. Os demais somem depois de 8 s,
+   mas o tempo é pausado enquanto o mouse ou o foco estiverem sobre eles (WCAG 2.2.1). */
+export function mostrarToast(mensagem, tipo = "info", tempo = 8000) {
   if (!areaToasts) return;
   const toast = document.createElement("div");
   toast.className = `toast toast--${tipo}`;
+  if (tipo === "erro") toast.setAttribute("role", "alert");   // erros são anunciados na hora
 
   const texto = document.createElement("p");
   texto.textContent = mensagem;                       // textContent: nunca interpreta HTML
@@ -33,7 +36,17 @@ export function mostrarToast(mensagem, tipo = "info", tempo = 4500) {
 
   toast.append(texto, fechar);
   areaToasts.append(toast);
-  setTimeout(() => { if (toast.isConnected) removerToast(toast); }, tempo);
+
+  if (tipo === "erro") return;                         // erro: sem fechamento automático
+
+  let temporizador;
+  const iniciar = () => { temporizador = setTimeout(() => { if (toast.isConnected) removerToast(toast); }, tempo); };
+  const pausar = () => clearTimeout(temporizador);
+  toast.addEventListener("mouseenter", pausar);
+  toast.addEventListener("focusin", pausar);
+  toast.addEventListener("mouseleave", iniciar);
+  toast.addEventListener("focusout", iniciar);
+  iniciar();
 }
 
 /* Abre o modal de confirmação e devolve uma Promise<boolean>. */
