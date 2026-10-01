@@ -21,7 +21,7 @@ export const cadastro = {
             <div class="grid">
               ${campo({ id: "nome", rotulo: "Nome completo", colunas: "col-12", atributos: 'maxlength="100" autocomplete="name"' })}
               ${campo({ id: "cpf", rotulo: "CPF", colunas: "col-12 col-md-6", dica: "Somente números; a formatação é automática.", atributos: 'inputmode="numeric" maxlength="14" placeholder="000.000.000-00" data-mask="cpf"' })}
-              ${campo({ id: "nascimento", rotulo: "Data de nascimento", tipo: "date", colunas: "col-12 col-md-6", dica: "É preciso ter 18 anos ou mais.", atributos: 'min="1900-01-01"' })}
+              ${campo({ id: "nascimento", rotulo: "Data de nascimento", tipo: "date", colunas: "col-12 col-md-6", dica: "É preciso ter 18 anos ou mais.", atributos: 'min="1900-01-01" autocomplete="bday"' })}
               ${campo({ id: "email", rotulo: "E-mail", tipo: "email", colunas: "col-12 col-md-6", atributos: 'maxlength="120" autocomplete="email" placeholder="voce@exemplo.com"' })}
               ${campo({ id: "telefone", rotulo: "Telefone com DDD", tipo: "tel", colunas: "col-12 col-md-6", atributos: 'inputmode="numeric" maxlength="15" autocomplete="tel" placeholder="(12) 91234-5678" data-mask="telefone"' })}
             </div>
@@ -34,7 +34,7 @@ export const cadastro = {
               ${campo({ id: "logradouro", rotulo: "Rua / Avenida", colunas: "col-12 col-md-8", atributos: 'maxlength="120" autocomplete="address-line1"' })}
               ${campo({ id: "numero", rotulo: "Número", colunas: "col-6 col-md-3", atributos: 'maxlength="10"' })}
               ${campo({ id: "complemento", rotulo: "Complemento", colunas: "col-6 col-md-5", obrigatorio: false, atributos: 'maxlength="60" autocomplete="address-line2"' })}
-              ${campo({ id: "bairro", rotulo: "Bairro", colunas: "col-12 col-md-4", atributos: 'maxlength="60"' })}
+              ${campo({ id: "bairro", rotulo: "Bairro", colunas: "col-12 col-md-4", atributos: 'maxlength="60" autocomplete="address-level3"' })}
               ${campo({ id: "cidade", rotulo: "Cidade", colunas: "col-12 col-md-8", atributos: 'maxlength="60" autocomplete="address-level2"' })}
               ${campoSelect({ id: "estado", rotulo: "Estado", colunas: "col-12 col-md-4", opcoes: estados })}
             </div>
