@@ -1,0 +1,7 @@
+# dependências
+node_modules/
+
+# sistema e editor
+.DS_Store
+Thumbs.db
+*.log
