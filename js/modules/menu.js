@@ -46,8 +46,22 @@ export function iniciarMenu() {
   /* qualquer link do menu leva a outra rota: fecha o painel */
   delegar(painel(), "click", "a", fecharMenus);
 
+  /* WCAG 1.4.13: o conteúdo que aparece por hover ou foco precisa poder ser dispensado (Esc),
+     sem mover o mouse nem o foco. O atributo data-dispensado esconde o submenu até a pessoa sair do item. */
+  qsa(".has-submenu").forEach((item) => {
+    const liberar = () => item.removeAttribute("data-dispensado");
+    item.addEventListener("mouseleave", liberar);
+    item.addEventListener("focusout", () => setTimeout(() => { if (!item.contains(document.activeElement)) liberar(); }));
+  });
+
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
+    qsa(".has-submenu").forEach((item) => {
+      const aberto = item.matches(":hover, :focus-within") || item.classList.contains("is-open");
+      if (!aberto) return;
+      if (item.contains(document.activeElement) && document.activeElement !== qs("a", item)) qs("a", item).focus();
+      item.setAttribute("data-dispensado", "");
+    });
     fecharSubmenus();
     if (!desktop.matches && botaoMenu().getAttribute("aria-expanded") === "true") {
       abrirMenu(false);

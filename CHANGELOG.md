@@ -5,7 +5,16 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Não lançado]
 
+### Corrigido
+- Contraste do anel de foco (WCAG 1.4.11): azul-marinho em fundo claro e amarelo em fundo escuro.
+- Submenu do menu pode ser dispensado com Esc (WCAG 1.4.13).
+- Toasts de erro não somem sozinhos; os demais pausam com mouse ou foco (WCAG 2.2.1).
+- Mensagens de erro do formulário anunciadas por leitores de tela (WCAG 4.1.3).
+- `autocomplete` nos campos de nascimento e bairro (WCAG 1.3.5).
+- Cor da fatia amarela do gráfico com contraste suficiente (WCAG 1.4.11).
+
 ### Adicionado
+- Relatório de acessibilidade (`ACESSIBILIDADE.md`).
 - README, guia de contribuição (`CONTRIBUTING.md`) e este changelog.
 - Arquivo `.gitignore`.
 

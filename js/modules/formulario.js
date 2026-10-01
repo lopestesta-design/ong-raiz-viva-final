@@ -123,8 +123,13 @@ export function iniciarFormulario(raiz) {
     /* consistência entre dados: o mesmo CPF não pode ser cadastrado duas vezes */
     if (!erros.cpf && cpfJaCadastrado(dados.cpf)) erros.cpf = "Este CPF já está cadastrado neste navegador.";
 
+    /* no envio, o foco vai ao primeiro erro e o toast resume o problema: silencio as regiões ao vivo
+       por um instante para o leitor de tela não ler todas as mensagens de uma vez */
+    const regioes = qsa(".erro", form);
+    regioes.forEach((p) => p.setAttribute("aria-live", "off"));
     limparErros(form);
     Object.keys(regras).forEach((nome) => mostrarErro(form, nome, erros[nome] ?? ""));
+    setTimeout(() => regioes.forEach((p) => p.setAttribute("aria-live", "polite")), 300);
 
     const primeiro = Object.keys(erros)[0];
     if (primeiro) {

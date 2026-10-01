@@ -41,7 +41,7 @@ export const campo = ({ id, rotulo, tipo = "text", colunas = "col-12", obrigator
     <label for="${id}">${e(rotulo)}${obrigatorio ? " *" : ""}</label>
     <input type="${tipo}" id="${id}" name="${id}"${obrigatorio ? " required" : ""} aria-describedby="${descricao(id, dica)}" ${atributos}>
     ${dica ? `<span id="${id}-dica" class="dica">${e(dica)}</span>` : ""}
-    <p id="${id}-erro" class="erro"></p>
+    <p id="${id}-erro" class="erro" aria-live="polite"></p>
   </div>`;
 
 export const campoSelect = ({ id, rotulo, opcoes, colunas = "col-12", obrigatorio = true, dica = "" }) => `
@@ -52,5 +52,5 @@ export const campoSelect = ({ id, rotulo, opcoes, colunas = "col-12", obrigatori
       ${opcoes.map(([valor, texto]) => `<option value="${e(valor)}">${e(texto)}</option>`).join("")}
     </select>
     ${dica ? `<span id="${id}-dica" class="dica">${e(dica)}</span>` : ""}
-    <p id="${id}-erro" class="erro"></p>
+    <p id="${id}-erro" class="erro" aria-live="polite"></p>
   </div>`;

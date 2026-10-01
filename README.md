@@ -81,6 +81,10 @@ Executa os testes das regras de validação (CPF, telefone, CEP, e-mail, maiorid
 - **Nova regra de validação:** acrescente uma função em `regras`, em `js/modules/validacao.js`, e um teste em `tests/`.
 - **Cores, fontes e espaçamentos:** altere as variáveis em `css/tokens.css`.
 
+## Acessibilidade
+
+O projeto foi auditado contra a **WCAG 2.1 nível AA** (axe-core, contraste, teclado e reflow). Os problemas encontrados foram corrigidos, e o relatório completo, com a metodologia e as limitações, está em [ACESSIBILIDADE.md](ACESSIBILIDADE.md).
+
 ## Decisões técnicas
 
 - **Roteamento por hash** em vez da History API, para funcionar no GitHub Pages sem configurar servidor.
