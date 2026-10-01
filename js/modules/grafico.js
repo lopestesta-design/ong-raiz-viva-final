@@ -47,7 +47,7 @@ export async function desenharGraficoTipos(canvas, resumo) {
         labels: ["Doadores", "Voluntários", "Doador e voluntário"],
         datasets: [{
           data: [resumo.doador, resumo.voluntario, resumo.ambos],
-          backgroundColor: [cor("--color-success"), cor("--color-primary"), cor("--color-accent-strong")],
+          backgroundColor: [cor("--color-success"), cor("--color-primary"), cor("--chart-amber")],
           borderColor: cor("--color-surface"),
           borderWidth: 3,
         }],

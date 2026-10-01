@@ -45,6 +45,7 @@
   --color-warning-text: #6B4A00;
   --color-info-bg: var(--leaf-100);
   --color-neutral-bg: #E8ECF2;
+  --chart-amber: #A66F00;      /* 4,2:1 sobre branco: fatia do gráfico com contraste mínimo de 3:1 */
 
   /* ----- Tipografia ----- */
   --font-heading: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
