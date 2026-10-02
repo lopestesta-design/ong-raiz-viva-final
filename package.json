@@ -1,9 +1,18 @@
 {
-  "name": "ong-raiz-viva-spa",
+  "name": "ong-raiz-viva",
   "version": "1.0.0",
-  "description": "SPA do Instituto Raiz Viva (Experiência Prática III de Desenvolvimento Front-end)",
+  "description": "Plataforma web (SPA) do Instituto Raiz Viva, ONG fictícia",
   "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20.9"
+  },
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "sharp": "^0.35.5"
   }
 }
