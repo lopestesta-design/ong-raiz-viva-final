@@ -4,10 +4,11 @@
    O que faz:
    1. Junta e minifica todo o JavaScript em um único arquivo (esbuild), com hash no nome.
    2. Junta e minifica os arquivos CSS em um único arquivo, com hash no nome.
-   3. Copia só as imagens que as páginas realmente usam.
+   3. Otimiza e copia só as imagens que as páginas realmente usam.
    4. Gera o HTML apontando para os arquivos novos.
    5. Mostra um relatório de tamanhos. */
 import { build, transform } from "esbuild";
+import sharp from "sharp";
 import { readFile, writeFile, mkdir, rm, cp, readdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { gzipSync } from "node:zlib";
@@ -28,11 +29,32 @@ async function listarArquivos(pasta, extensao) {
     .filter((caminho) => !caminho.includes(`${path.sep}vendor${path.sep}`));
 }
 
-/* --- Otimização de uma imagem (a versão sem otimização só copia) --- */
+/* --- Otimização de uma imagem ---
+   PNG: reduz a paleta de cores. WebP: gerado a partir do PNG original (evita recomprimir
+   uma imagem que já tinha perdas). JPG: mozjpeg. SVG: remove espaços e comentários.
+   Se o resultado não ficar menor que o original, o original é mantido. */
 async function otimizarImagem(origem, destino) {
   const original = await readFile(origem);
-  await writeFile(destino, original);
-  return { antes: original.length, depois: original.length };
+  const extensao = path.extname(origem).toLowerCase();
+  let otimizado = original;
+
+  if (extensao === ".png") {
+    otimizado = await sharp(original).png({ palette: true, quality: 85, effort: 10, compressionLevel: 9 }).toBuffer();
+  } else if (extensao === ".webp") {
+    const irmaoPng = origem.replace(/\.webp$/, ".png");
+    const fonte = await readFile(irmaoPng).catch(() => original);
+    otimizado = await sharp(fonte).webp({ quality: 82, effort: 6 }).toBuffer();
+  } else if (extensao === ".jpg" || extensao === ".jpeg") {
+    otimizado = await sharp(original).jpeg({ quality: 82, mozjpeg: true }).toBuffer();
+  } else if (extensao === ".svg") {
+    otimizado = Buffer.from(
+      original.toString("utf8").replace(/<!--[\s\S]*?-->/g, "").replace(/>\s+</g, "><").replace(/\s{2,}/g, " ").trim(),
+    );
+  }
+
+  if (otimizado.length >= original.length) otimizado = original;
+  await writeFile(destino, otimizado);
+  return { antes: original.length, depois: otimizado.length };
 }
 
 const medidas = { css: { antes: 0, antesGz: 0 }, js: { antes: 0, antesGz: 0 } };
