@@ -4,6 +4,8 @@ Plataforma web de uma ONG fictícia, criada na disciplina de Desenvolvimento Fro
 
 > Organização e dados fictícios, usados apenas para fins acadêmicos.
 
+**Demonstração:** https://lopestesta-design.github.io/ong-raiz-viva-final/
+
 ## Funcionalidades
 
 - **Navegação sem recarregar a página**, com roteador por hash (`#/rota`), menu responsivo (hambúrguer no celular e dropdown no desktop) e página 404.

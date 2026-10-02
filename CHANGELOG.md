@@ -3,7 +3,7 @@
 Todas as mudanças relevantes do projeto ficam registradas aqui.
 O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
-## [Não lançado]
+## [1.0.0] - 2026-10-01
 
 ### Adicionado
 - Build de produção com esbuild (`npm run build`): JavaScript e CSS minificados e com hash no nome.
