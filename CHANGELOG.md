@@ -5,6 +5,15 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ## [Não lançado]
 
+### Adicionado
+- Build de produção com esbuild (`npm run build`): JavaScript e CSS minificados e com hash no nome.
+- Otimização de imagens no build (sharp) e publicação só das imagens usadas.
+- Publicação automática no GitHub Pages com GitHub Actions, rodando os testes antes.
+- Favicon e cor do tema no HTML.
+
+### Alterado
+- Peso da página inicial reduzido em cerca de 40% (JavaScript, CSS e imagens comprimidos).
+
 ### Corrigido
 - Contraste do anel de foco (WCAG 1.4.11): azul-marinho em fundo claro e amarelo em fundo escuro.
 - Submenu do menu pode ser dispensado com Esc (WCAG 1.4.13).
