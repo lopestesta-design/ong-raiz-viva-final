@@ -1,6 +1,9 @@
 # dependências
 node_modules/
 
+# resultado do build
+dist/
+
 # sistema e editor
 .DS_Store
 Thumbs.db

@@ -40,6 +40,8 @@ js/
   templates/          componentes reutilizáveis e uma página por arquivo
   vendor/             biblioteca externa (Chart.js)
 tests/                testes automatizados das regras de validação e das máscaras
+scripts/build.mjs     build de produção (gera a pasta dist/)
+.github/workflows/    publicação automática no GitHub Pages
 ```
 
 ## Como executar
@@ -65,6 +67,44 @@ Depois abra `http://localhost:8000`. No VS Code, a extensão **Live Server** tam
 3. Em **Apoiadores**, veja os cadastros salvos, o gráfico por tipo de apoio e remova registros.
 
 Os dados ficam apenas no navegador de quem usa. Não há envio para servidor.
+
+## Build e deploy
+
+O site em produção não usa os arquivos-fonte diretamente: o comando `npm run build` gera a pasta `dist/`, que é a que vai ao ar.
+
+```bash
+npm install        # uma vez (Node.js 20.9 ou superior)
+npm run build      # gera dist/
+python3 -m http.server 8000 -d dist   # para conferir o resultado em http://localhost:8000
+```
+
+### O que o build faz
+- **JavaScript:** junta os 20 módulos em um único arquivo e minifica (esbuild).
+- **CSS:** junta os 6 arquivos em um só e minifica.
+- **Cache:** os arquivos levam um hash no nome (`main.5035c859.js`), então o navegador baixa de novo só o que mudou.
+- **Imagens:** publica só as que o site usa, com o PNG reduzido e o WebP gerado a partir do PNG original.
+- **HTML:** aponta para os arquivos novos.
+
+### Resultado (tamanho e, entre parênteses, comprimido com gzip)
+
+| Item | Antes | Depois |
+|---|---|---|
+| JavaScript | 46,5 KB (19,0 KB) | 28,8 KB (10,0 KB) |
+| CSS | 29,3 KB (8,6 KB) | 20,7 KB (4,6 KB) |
+| Imagem `horta.png` | 7,9 KB | 1,9 KB |
+| Imagem `horta.webp` | 5,8 KB | 5,4 KB |
+| Requisições de JS e CSS | 26 | 2 |
+
+Somando o que a página inicial baixa (JavaScript, CSS e imagens, comprimidos), o total cai de cerca de 34 KB para 20 KB, ou seja, aproximadamente 40% menos. O Chart.js (arquivo à parte) só é baixado na página de apoiadores.
+
+### Publicação (deploy)
+O deploy é automático. A cada push na branch `main`, o workflow `.github/workflows/deploy.yml`:
+1. instala as dependências (`npm ci`);
+2. roda os testes (`npm test`);
+3. gera o `dist/` (`npm run build`);
+4. publica o `dist/` no GitHub Pages.
+
+Para ativar uma vez: no repositório, **Settings > Pages > Source: GitHub Actions**.
 
 ## Testes
 
